@@ -264,7 +264,7 @@ function setupControlPoints() {
     scene.remove(point5);
     scene.remove(controlLine);
 
-    let sphereGeometry = new THREE.SphereGeometry(.02, 20, 20);
+    let sphereGeometry = new THREE.SphereGeometry(.015, 20, 20);
     let sphereMaterial = new THREE.MeshBasicMaterial({
         color: 0xff00ff,
         wireframe: false
@@ -300,7 +300,11 @@ function setupControlPoints() {
     scene.add(point4);
     scene.add(point5);
 
-    let material = new THREE.LineBasicMaterial({ color: 0xffff00 });
+    let material = new THREE.LineBasicMaterial({
+        color: 0xffff00,
+        opacity: 0.25,
+        transparent: true
+    });
     let geometry = new THREE.Geometry();
     geometry.vertices.push(point1.position);
     geometry.vertices.push(point2.position);
