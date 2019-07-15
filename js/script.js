@@ -37,6 +37,10 @@ let noUPoints, uStep;
 let curveLine;
 let point1, point2, point3, point4, point5, pointU;
 let uVal;
+let arrowHelper1, arrowHelper2, arrowHelper3;
+let arrowDirection1 = new THREE.Vector3();
+let arrowDirection2 = new THREE.Vector3();
+let arrowDirection3 = new THREE.Vector3();
 
 window.onload = init;
 
@@ -209,6 +213,23 @@ function init() {
 
     let axes = new THREE.AxesHelper(.4);
     scene.add(axes);
+
+    let origin = new THREE.Vector3(0, 0, 0);
+    let xPos = new THREE.Vector3(0.4, 0, 0);
+    let yPos = new THREE.Vector3(0, 0.4, 0);
+    let zPos = new THREE.Vector3(0, 0, 0.4);
+
+    arrowDirection1.subVectors(xPos, origin).normalize();
+    arrowHelper1 = new THREE.ArrowHelper(arrowDirection1, origin, 0.4, 0xff0000, 0.07, 0.04);
+    scene.add(arrowHelper1);
+
+    arrowDirection2.subVectors(yPos, origin).normalize();
+    arrowHelper2 = new THREE.ArrowHelper(arrowDirection2, origin, 0.4, 0x00ff00, 0.07, 0.04);
+    scene.add(arrowHelper2);
+
+    arrowDirection3.subVectors(zPos, origin).normalize();
+    arrowHelper3 = new THREE.ArrowHelper(arrowDirection3, origin, 0.4, 0x0000ff, 0.07, 0.04);
+    scene.add(arrowHelper3);
 
     setupCubePoints();
     setupBoundaryPoints();
